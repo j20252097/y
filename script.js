@@ -198,7 +198,15 @@ function startRound(){
 	  lose: new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg')
 	};
 
-	function playSound(name){ if(!soundEnabled) return; try{ snd[name]?.currentTime=0; snd[name]?.play(); }catch(e){} }
+		function playSound(name){
+			if(!soundEnabled) return;
+			try{
+				const s = snd[name];
+				if(!s) return;
+				s.currentTime = 0;
+				s.play();
+			}catch(e){}
+		}
 
 	function createDeck(){
 	  const suits = ['♠','♥','♦','♣'];
@@ -313,3 +321,4 @@ function startRound(){
 	// footer year
 	document.getElementById('year').textContent = new Date().getFullYear();
 
+}
